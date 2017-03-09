@@ -10,6 +10,18 @@ config.blackList = [
   /athlonsports\.com/
 ];
 
+config.classes = [
+      "[itemprop='articleBody']",
+      '.post-content noscript',
+      '.post-body',
+      '.post-content',
+      '.article-body',
+      '.article-content',
+      '.entry-inner',
+      '.post',
+      'article'
+];
+
 config.adsDomain = [
   'lifehacker.com',
   'deadspin.com',

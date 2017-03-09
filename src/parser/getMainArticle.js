@@ -23,7 +23,8 @@ var extractByClass = (input) => {
     html
   } = input;
 
-  if (content) {
+  content = content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+  if (content && content.length > 20) {
     info('Content is already. Cancel extracting by class.');
     return Promise.resolve(input);
   }
@@ -31,17 +32,7 @@ var extractByClass = (input) => {
   let $ = cheerio.load(html);
 
   if ($) {
-
-    let classes = [
-      '.post-content noscript',
-      '.post-body',
-      '.post-content',
-      '.article-body',
-      '.article-content',
-      '.entry-inner',
-      '.post',
-      'article'
-    ];
+    let classes = config.classes;
 
     for (let i = 0; i < classes.length; i++) {
       let c = $(classes[i]);
@@ -125,6 +116,7 @@ var getArticle = (html) => {
       return resolve(pureContent);
     })
     .catch((err) => {
+      console.log(err)
       error('Something wrong when extracting article from HTML');
       error(err);
       return reject(err);
