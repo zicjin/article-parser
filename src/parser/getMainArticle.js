@@ -47,7 +47,7 @@ var extractByClass = (input) => {
   }
 
   info('Finish extracting by class name.');
-  info(`Content length: ${content.length}`);
+  info(`Content length: ${content? content.length: 0}`);
 
   return Promise.resolve(input);
 };
@@ -68,10 +68,11 @@ var extractWithReadability = (input) => {
         info('Content extracted with es6-readability.');
         content = a.content;
       }
-      return resolve({
-        content,
-        html
-      });
+      return content
+      // return resolve({
+      //   content,
+      //   html
+      // });
     }).catch((err) => {
       error('Failed while extracting using es6-readability.');
       error(err);
@@ -109,12 +110,12 @@ var getArticle = (html) => {
       html,
       content: ''
     })
-    .then(extractByClass)
-    .then(normalize)
-    .then((pureContent) => {
-      info('Finish extracting article from HTML');
-      return resolve(pureContent);
-    })
+    // .then(extractByClass)
+    // .then(normalize)
+    // .then((pureContent) => {
+    //   info('Finish extracting article from HTML');
+    //   return resolve(pureContent);
+    // })
     .catch((err) => {
       console.log(err)
       error('Something wrong when extracting article from HTML');

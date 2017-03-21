@@ -1,6 +1,6 @@
 {
   "version": "1.6.12",
-  "name": "article-parser",
+  "name": "article-parser-zic",
   "description": "Extract clean article data from given URL.",
   "homepage": "https://www.npmjs.com/package/article-parser",
   "repository": {
