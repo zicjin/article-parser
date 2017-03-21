@@ -48,7 +48,8 @@ var extractByClass = (input) => {
 
   info('Finish extracting by class name.');
   info(`Content length: ${content? content.length: 0}`);
-
+  if (!content)
+    input.content = "content is empty";
   return Promise.resolve(input);
 };
 
