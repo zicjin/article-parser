@@ -69,7 +69,6 @@ var extractWithReadability = (input) => {
         info('Content extracted with es6-readability.');
         content = a.content;
       }
-      return content
       return resolve({
         content,
         html
