@@ -70,10 +70,10 @@ var extractWithReadability = (input) => {
         content = a.content;
       }
       return content
-      // return resolve({
-      //   content,
-      //   html
-      // });
+      return resolve({
+        content,
+        html
+      });
     }).catch((err) => {
       error('Failed while extracting using es6-readability.');
       error(err);
@@ -111,12 +111,12 @@ var getArticle = (html) => {
       html,
       content: ''
     })
-    // .then(extractByClass)
-    // .then(normalize)
-    // .then((pureContent) => {
-    //   info('Finish extracting article from HTML');
-    //   return resolve(pureContent);
-    // })
+    .then(extractByClass)
+    .then(normalize)
+    .then((pureContent) => {
+      info('Finish extracting article from HTML');
+      return resolve(pureContent);
+    })
     .catch((err) => {
       console.log(err)
       error('Something wrong when extracting article from HTML');
